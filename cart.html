@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Giỏ hàng &amp; thanh toán — Merlin Fashion</title>
+  <meta name="description" content="Xem giỏ hàng và thanh toán tại Merlin Fashion. Hỗ trợ COD, chuyển khoản, giao hàng toàn quốc.">
+  <link rel="icon" href="images/icons/favicon.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,500&family=Sacramento&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/shop.css">
+</head>
+<body>
+  <div class="announce">Miễn phí giao hàng toàn quốc cho đơn từ <strong data-freeship>500.000₫</strong> · Đổi trả trong 30 ngày</div>
+
+  <header class="site-header" data-site-header>
+    <div class="container header-inner">
+      <button class="menu-toggle" type="button" data-menu-toggle aria-label="Mở menu" aria-expanded="false" aria-controls="mainNav">
+        <span></span><span></span><span></span>
+      </button>
+      <a class="brand" href="index.html" aria-label="Merlin Fashion — Trang chủ">
+        <span class="brand-script">Merlin</span><span class="brand-sub">Fashion</span>
+      </a>
+      <nav class="main-nav" id="mainNav" data-main-nav aria-label="Điều hướng chính">
+        <a href="index.html">Trang chủ</a>
+        <a href="products.html">Sản phẩm</a>
+        <a href="categories.html">Danh mục</a>
+        <a href="merlin.html">Câu chuyện</a>
+        <a href="contact.html">Liên hệ</a>
+      </nav>
+      <div class="header-actions">
+        <a class="icon-btn" href="login.html" aria-label="Tài khoản">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </a>
+        <a class="icon-btn cart-link" href="cart.html" aria-label="Giỏ hàng">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          <span class="cart-count is-empty" data-cart-count>0</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Đường dẫn">
+          <a href="index.html">Trang chủ</a><span class="sep">/</span><span>Giỏ hàng</span>
+        </nav>
+        <h1>Giỏ hàng của bạn</h1>
+        <p>Kiểm tra sản phẩm, áp mã giảm giá và điền thông tin giao hàng. Bạn có thể thanh toán khi nhận hàng.</p>
+      </div>
+    </section>
+
+    <!-- GIỎ HÀNG -->
+    <section class="container cart-layout" id="cartView">
+      <div>
+        <div class="cart-items" id="cartItems"></div>
+        <div style="margin-top: 18px">
+          <a class="link-arrow" href="products.html">← Tiếp tục mua sắm</a>
+        </div>
+      </div>
+
+      <aside class="cart-summary" aria-label="Tóm tắt đơn hàng">
+        <h2>Tóm tắt đơn hàng</h2>
+
+        <div class="freeship" id="freeshipBox">
+          <span id="freeshipText"></span>
+          <div class="freeship__bar"><div class="freeship__fill" id="freeshipFill"></div></div>
+        </div>
+
+        <form class="promo-form" id="promoForm" autocomplete="off">
+          <input type="text" id="promoInput" placeholder="Mã giảm giá" aria-label="Mã giảm giá">
+          <button type="submit">Áp dụng</button>
+        </form>
+        <div class="promo-applied" id="promoApplied" hidden>
+          <span id="promoLabel"></span>
+          <button type="button" id="removePromo">Bỏ mã</button>
+        </div>
+
+        <div class="summary-lines">
+          <div class="summary-line"><span>Tạm tính</span><span id="sumSubtotal">0₫</span></div>
+          <div class="summary-line summary-line--discount" id="lineDiscount" hidden>
+            <span>Giảm giá</span><span id="sumDiscount">0₫</span>
+          </div>
+          <div class="summary-line summary-line--free" id="lineShipping">
+            <span>Phí giao hàng</span><span id="sumShipping">0₫</span>
+          </div>
+        </div>
+
+        <div class="summary-total">
+          <span>Tổng cộng</span>
+          <strong id="sumTotal">0₫</strong>
+        </div>
+        <p class="summary-note">Giá đã gồm VAT. Phí ship được tính theo khu vực, miễn phí từ 500.000₫.</p>
+
+        <button class="btn btn--primary btn--block" type="button" id="toCheckout">Tiến hành thanh toán</button>
+        <p class="secure-note">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          Thông tin của bạn được bảo mật
+        </p>
+      </aside>
+    </section>
+
+    <!-- GIỎ TRỐNG -->
+    <section class="container" id="cartEmpty" hidden style="padding: 20px 0 90px">
+      <div class="empty-state">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <h3>Giỏ hàng đang trống</h3>
+        <p>Hãy thêm vài món bạn thích vào giỏ. Đơn từ 500.000₫ sẽ được miễn phí giao hàng.</p>
+        <a class="btn btn--primary" href="products.html">Mua sắm ngay</a>
+      </div>
+    </section>
+
+    <!-- THANH TOÁN -->
+    <section class="checkout-section" id="checkoutSection">
+      <div class="container">
+        <div class="checkout-card" id="checkoutCard">
+          <h2>Thông tin giao hàng</h2>
+          <p>Điền chính xác số điện thoại và địa chỉ để đơn hàng đến tay bạn nhanh nhất.</p>
+
+          <form id="checkoutForm" novalidate>
+            <div class="form-grid">
+              <div class="form-field form-field--full">
+                <label for="customerName">Họ và tên *</label>
+                <input type="text" id="customerName" name="name" autocomplete="name" placeholder="Nguyễn Văn A">
+                <span class="field-error" data-error-for="customerName"></span>
+              </div>
+              <div class="form-field">
+                <label for="customerPhone">Số điện thoại *</label>
+                <input type="tel" id="customerPhone" name="phone" autocomplete="tel" placeholder="09xx xxx xxx" inputmode="tel">
+                <span class="field-error" data-error-for="customerPhone"></span>
+              </div>
+              <div class="form-field">
+                <label for="customerEmail">Email (không bắt buộc)</label>
+                <input type="email" id="customerEmail" name="email" autocomplete="email" placeholder="ban@email.com">
+                <span class="field-error" data-error-for="customerEmail"></span>
+              </div>
+              <div class="form-field form-field--full">
+                <label for="customerProvince">Tỉnh / thành phố *</label>
+                <select id="customerProvince" name="province">
+                  <option value="">— Chọn tỉnh / thành phố —</option>
+                  <option>Hà Nội</option>
+                  <option>TP. Hồ Chí Minh</option>
+                  <option>Đà Nẵng</option>
+                  <option>Hải Phòng</option>
+                  <option>Cần Thơ</option>
+                  <option>Bình Dương</option>
+                  <option>Đồng Nai</option>
+                  <option>Khánh Hòa</option>
+                  <option>Quảng Ninh</option>
+                  <option>Khác</option>
+                </select>
+                <span class="field-error" data-error-for="customerProvince"></span>
+              </div>
+              <div class="form-field form-field--full">
+                <label for="customerAddress">Địa chỉ chi tiết *</label>
+                <input type="text" id="customerAddress" name="address" autocomplete="street-address" placeholder="Số nhà, tên đường, phường/xã">
+                <span class="field-error" data-error-for="customerAddress"></span>
+              </div>
+              <div class="form-field form-field--full">
+                <label for="customerNote">Ghi chú (không bắt buộc)</label>
+                <textarea id="customerNote" name="note" placeholder="Thời gian nhận hàng, hướng dẫn giao hàng..."></textarea>
+              </div>
+            </div>
+
+            <h3 style="font-size: 13px; letter-spacing: .12em; text-transform: uppercase; margin: 26px 0 0">Phương thức thanh toán</h3>
+            <div class="payment-methods">
+              <label class="payment-option">
+                <input type="radio" name="payment" value="cod" checked>
+                <span>
+                  <strong>Thanh toán khi nhận hàng (COD)</strong>
+                  <span>Trả tiền mặt cho shipper khi nhận được hàng. Phù hợp với đơn lần đầu.</span>
+                </span>
+              </label>
+              <label class="payment-option">
+                <input type="radio" name="payment" value="bank">
+                <span>
+                  <strong>Chuyển khoản ngân hàng</strong>
+                  <span>Chuyển khoản trước, shop xác nhận và gửi hàng ngay trong ngày.</span>
+                </span>
+              </label>
+            </div>
+
+            <div class="bank-box" id="bankBox">
+              <p><strong>Ngân hàng:</strong> <span id="bankName">Vietcombank</span></p>
+              <p><strong>Chủ tài khoản:</strong> <span id="bankAccountName">MERLIN FASHION</span></p>
+              <p><strong>Số tài khoản:</strong> <span id="bankAccountNumber">0123456789</span></p>
+              <p>Nội dung chuyển khoản: <strong id="bankNote">Mã đơn hàng</strong></p>
+            </div>
+
+            <div class="checkout-actions">
+              <button class="btn btn--primary" type="submit" id="placeOrder">Đặt hàng</button>
+              <span class="text-muted">Bạn sẽ thấy mã đơn ngay sau khi đặt.</span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ĐẶT HÀNG THÀNH CÔNG -->
+    <section class="container order-success" id="orderSuccess" hidden>
+      <div class="order-success__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+      </div>
+      <h1>Cảm ơn bạn! Đơn hàng đã được ghi nhận</h1>
+      <p>Chúng tôi sẽ gọi xác nhận trong 30 phút (giờ hành chính). Bạn có thể theo dõi đơn qua Zalo hoặc email.</p>
+      <div class="order-success__code" id="successCode">MF-20261122-000</div>
+
+      <div class="order-success__box">
+        <h2>Chi tiết đơn hàng</h2>
+        <div id="successSummary"></div>
+        <div class="order-success__row"><span>Thanh toán</span><span id="successPayment">COD</span></div>
+        <div class="order-success__row"><span>Giao đến</span><span id="successAddress"></span></div>
+      </div>
+
+      <div class="order-success__actions">
+        <a class="btn btn--primary" href="products.html">Tiếp tục mua sắm</a>
+        <a class="btn btn--outline" id="zaloOrder" href="#" target="_blank" rel="noopener">Gửi đơn qua Zalo</a>
+        <button class="btn btn--outline" type="button" id="copyOrder">Sao chép đơn hàng</button>
+      </div>
+      <p class="text-muted" style="margin-top: 18px" id="successNote"></p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <span class="brand-script">Merlin</span>
+          <p>Thời trang nam nữ, giày dép và phụ kiện. Chọn lọc kỹ, giá thật, phục vụ tận tâm.</p>
+          <div class="footer-social">
+            <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1V7.9c0-.9.25-1.5 1.54-1.5h1.66V3.6c-.29-.04-1.27-.12-2.42-.12-2.4 0-4.04 1.46-4.04 4.15v2.27H7.5V13h2.74v8h3.26Z"/></svg>
+            </a>
+            <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+            </a>
+            <a href="https://youtube.com" target="_blank" rel="noopener" aria-label="YouTube">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="m10 9 5 3-5 3V9Z" fill="currentColor" stroke="none"/></svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <h3>Mua sắm</h3>
+          <div class="footer-links">
+            <a href="products.html">Tất cả sản phẩm</a>
+            <a href="products.html?category=nu">Thời trang nữ</a>
+            <a href="products.html?category=nam">Thời trang nam</a>
+            <a href="products.html?type=giay">Giày &amp; sneaker</a>
+            <a href="products.html?sale=1">Đang giảm giá</a>
+          </div>
+        </div>
+        <div>
+          <h3>Hỗ trợ</h3>
+          <div class="footer-links">
+            <a href="contact.html">Liên hệ</a>
+            <a href="contact.html">Chính sách đổi trả</a>
+            <a href="contact.html">Vận chuyển &amp; giao hàng</a>
+            <a href="contact.html">Hướng dẫn chọn size</a>
+            <a href="login.html">Tài khoản của tôi</a>
+          </div>
+        </div>
+        <div class="footer-contact">
+          <h3>Liên hệ</h3>
+          <p>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>12 Nguyễn Huệ, Hoàn Kiếm, Hà Nội</span>
+          </p>
+          <p>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <a href="tel:0909123456" data-hotline>0909 123 456</a>
+          </p>
+          <p>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+            <a href="mailto:hello@merlinfashion.vn" data-email>hello@merlinfashion.vn</a>
+          </p>
+          <p>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            <span>8:00 – 21:30, T2 – CN</span>
+          </p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Merlin Fashion. All rights reserved.</p>
+        <p>Thiết kế &amp; phát triển bởi Merlin Fashion</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/config.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/shop.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/cart.js"></script>
+</body>
+</html>

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chi tiết sản phẩm — Merlin Fashion</title>
+  <meta name="description" content="Chi tiết sản phẩm thời trang tại Merlin Fashion — chất liệu, bảng size, chính sách đổi trả.">
+  <link rel="icon" href="images/icons/favicon.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,500&family=Sacramento&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/shop.css">
+</head>
+<body>
+  <div class="announce">Miễn phí giao hàng toàn quốc cho đơn từ <strong data-freeship>500.000₫</strong> · Đổi trả trong 30 ngày</div>
+
+  <header class="site-header" data-site-header>
+    <div class="container header-inner">
+      <button class="menu-toggle" type="button" data-menu-toggle aria-label="Mở menu" aria-expanded="false" aria-controls="mainNav">
+        <span></span><span></span><span></span>
+      </button>
+      <a class="brand" href="index.html" aria-label="Merlin Fashion — Trang chủ">
+        <span class="brand-script">Merlin</span><span class="brand-sub">Fashion</span>
+      </a>
+      <nav class="main-nav" id="mainNav" data-main-nav aria-label="Điều hướng chính">
+        <a href="index.html">Trang chủ</a>
+        <a href="products.html">Sản phẩm</a>
+        <a href="categories.html">Danh mục</a>
+        <a href="merlin.html">Câu chuyện</a>
+        <a href="contact.html">Liên hệ</a>
+      </nav>
+      <div class="header-actions">
+        <a class="icon-btn" href="login.html" aria-label="Tài khoản">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </a>
+        <a class="icon-btn cart-link" href="cart.html" aria-label="Giỏ hàng">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          <span class="cart-count is-empty" data-cart-count>0</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <nav class="breadcrumb" style="padding-top: 26px" aria-label="Đường dẫn">
+        <a href="index.html">Trang chủ</a><span class="sep">/</span>
+        <a href="products.html">Sản phẩm</a><span class="sep">/</span>
+        <span id="crumbName">Đang tải...</span>
+      </nav>
+    </div>
+
+    <article class="container pdp" id="pdp">
+      <div class="pdp-gallery">
+        <div class="pdp-gallery__main">
+          <img id="pdpImage" src="images/products-img/women/kurti1.png" alt="" width="720" height="960">
+        </div>
+      </div>
+
+      <div class="pdp-info">
+        <span class="pdp-badge" id="pdpBadge" hidden></span>
+        <h1 id="pdpName">Đang tải sản phẩm...</h1>
+        <div class="pdp__meta">
+          <span id="pdpCategory"></span>
+          <span>·</span>
+          <span id="pdpType"></span>
+          <span>·</span>
+          <span id="pdpStock">Còn hàng</span>
+        </div>
+
+        <div class="pdp__price">
+          <strong id="pdpPrice">—</strong>
+          <s id="pdpOldPrice" hidden></s>
+        </div>
+        <p class="pdp__tax">Giá đã bao gồm VAT. Miễn phí giao hàng cho đơn từ 500.000₫.</p>
+
+        <p class="pdp__desc" id="pdpDesc"></p>
+
+        <div class="pdp__label">
+          <span>Chọn size</span>
+          <button type="button" id="openSizeGuide">Bảng size</button>
+        </div>
+        <div class="size-list" id="pdpSizes" role="group" aria-label="Chọn size"></div>
+        <p class="size-hint" id="sizeHint" aria-live="polite"></p>
+
+        <div class="pdp__label"><span>Số lượng</span></div>
+        <div class="qty-row">
+          <div class="qty">
+            <button type="button" id="qtyMinus" aria-label="Giảm số lượng">−</button>
+            <input type="number" id="qtyInput" value="1" min="1" max="99" aria-label="Số lượng">
+            <button type="button" id="qtyPlus" aria-label="Tăng số lượng">+</button>
+          </div>
+          <span class="text-muted" id="qtyNote">Tối đa 99 sản phẩm</span>
+        </div>
+
+        <div class="pdp__actions">
+          <button class="btn btn--primary" type="button" id="pdpAdd">Thêm vào giỏ</button>
+          <button class="btn btn--outline" type="button" id="pdpBuy">Mua ngay</button>
+        </div>
+
+        <div class="pdp__perks">
+          <div class="perk">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.62l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg>
+            <span>Giao hàng 2–4 ngày, miễn phí từ 500.000₫</span>
+          </div>
+          <div class="perk">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 9-9"/><path d="M3 3v9h9"/></svg>
+            <span>Đổi trả miễn phí trong 30 ngày</span>
+          </div>
+          <div class="perk">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg>
+            <span>Cam kết chính hãng 100%, hoàn tiền nếu giả</span>
+          </div>
+        </div>
+
+        <div class="pdp__accordions">
+          <details class="accordion" open>
+            <summary>Mô tả sản phẩm</summary>
+            <p id="pdpDescLong"></p>
+          </details>
+          <details class="accordion">
+            <summary>Chất liệu &amp; bảo quản</summary>
+            <p id="pdpMaterial"></p>
+          </details>
+          <details class="accordion" id="sizeGuide">
+            <summary>Bảng size &amp; hướng dẫn chọn</summary>
+            <div class="size-guide">
+              <table>
+                <thead>
+                  <tr><th>Size</th><th>Ngực (cm)</th><th>Eo (cm)</th><th>Dài (cm)</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>S</td><td>84–88</td><td>64–68</td><td>62</td></tr>
+                  <tr><td>M</td><td>88–92</td><td>68–72</td><td>64</td></tr>
+                  <tr><td>L</td><td>92–96</td><td>72–76</td><td>66</td></tr>
+                  <tr><td>XL</td><td>96–100</td><td>76–80</td><td>68</td></tr>
+                </tbody>
+              </table>
+              <p>Giày: size 36–44 theo chuẩn Việt Nam. Nếu bạn nằm giữa hai size, hãy chọn size lớn hơn để thoải mái hơn.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </article>
+
+    <section class="section section--soft" id="relatedSection">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-head__text">
+            <p class="eyebrow">Có thể bạn thích</p>
+            <h2 class="section-title">Sản phẩm liên quan</h2>
+          </div>
+          <a class="link-arrow" href="products.html">Xem tất cả
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+        </div>
+        <div class="product-grid" id="relatedGrid"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <span class="brand-script">Merlin</span>
+          <p>Thời trang nam nữ, giày dép và phụ kiện. Chọn lọc kỹ, giá thật, phục vụ tận tâm.</p>
+          <div class="footer-social">
+            <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1V7.9c0-.9.25-1.5 1.54-1.5h1.66V3.6c-.29-.04-1.27-.12-2.42-.12-2.4 0-4.04 1.46-4.04 4.15v2.27H7.5V13h2.74v8h3.26Z"/></svg>
+            </a>
+            <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+            </a>
+            <a href="https://youtube.com" target="_blank" rel="noopener" aria-label="YouTube">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="m10 9 5 3-5 3V9Z" fill="currentColor" stroke="none"/></svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <h3>Mua sắm</h3>
+          <div class="footer-links">
+            <a href="products.html">Tất cả sản phẩm</a>
+            <a href="products.html?category=nu">Thời trang nữ</a>
+            <a href="products.html?category=nam">Thời trang nam</a>
+            <a href="products.html?type=giay">Giày &amp; sneaker</a>
+            <a href="products.html?sale=1">Đang giảm giá</a>
+          </div>
+        </div>
+        <div>
+          <h3>Hỗ trợ</h3>
+          <div class="footer-links">
+            <a href="contact.html">Liên hệ</a>
+            <a href="contact.html">Chính sách đổi trả</a>
+            <a href="contact.html">Vận chuyển &amp; giao hàng</a>
+            <a href="contact.html">Hướng dẫn chọn size</a>
+            <a href="login.html">Tài khoản của tôi</a>
+          </div>
+        </div>
+        <div class="footer-contact">
+          <h3>Liên hệ</h3>
+          <p>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>12 Nguyễn Huệ, Hoàn Kiếm, Hà Nội</span>
+          </p>
+          <p>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <a href="tel:0909123456" data-hotline>0909 123 456</a>
+          </p>
+          <p>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+            <a href="mailto:hello@merlinfashion.vn" data-email>hello@merlinfashion.vn</a>
+          </p>
+          <p>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            <span>8:00 – 21:30, T2 – CN</span>
+          </p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Merlin Fashion. All rights reserved.</p>
+        <p>Thiết kế &amp; phát triển bởi Merlin Fashion</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/config.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/shop.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/product.js"></script>
+</body>
+</html>

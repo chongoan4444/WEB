@@ -1,70 +1,194 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Login</title>
-    <link href="https://fonts.googleapis.com/css?family=Lora:400,700|Montserrat:300" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Chivo:300,700|Playfair+Display:700i" rel="stylesheet">
-    <link rel="stylesheet" href="css/style_index.css">
-    <link rel="stylesheet" href="css/demo.css">
-    <link rel="stylesheet" href="css/nav.css">
-    <link rel="stylesheet" href="css/categories.css">
-    <link rel="stylesheet" href="css/login.css">
-    
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tài khoản — Merlin Fashion</title>
+  <meta name="description" content="Đăng nhập hoặc đăng ký tài khoản Merlin Fashion để theo dõi đơn hàng và nhận ưu đãi.">
+  <link rel="icon" href="images/icons/favicon.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,500&family=Sacramento&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/shop.css">
 </head>
-<body style="background-color: #ffffff ;">
-    <!-- navbar -->
-    <nav>
-      <div class="logo">
-        <h3><a href="merlin.html" class="logo-name">Merlin Fashion</a></h3>
+<body>
+  <div class="announce">Miễn phí giao hàng toàn quốc cho đơn từ <strong data-freeship>500.000₫</strong> · Đổi trả trong 30 ngày</div>
+
+  <header class="site-header" data-site-header>
+    <div class="container header-inner">
+      <button class="menu-toggle" type="button" data-menu-toggle aria-label="Mở menu" aria-expanded="false" aria-controls="mainNav">
+        <span></span><span></span><span></span>
+      </button>
+      <a class="brand" href="index.html" aria-label="Merlin Fashion — Trang chủ">
+        <span class="brand-script">Merlin</span><span class="brand-sub">Fashion</span>
+      </a>
+      <nav class="main-nav" id="mainNav" data-main-nav aria-label="Điều hướng chính">
+        <a href="index.html">Trang chủ</a>
+        <a href="products.html">Sản phẩm</a>
+        <a href="categories.html">Danh mục</a>
+        <a href="merlin.html">Câu chuyện</a>
+        <a href="contact.html">Liên hệ</a>
+      </nav>
+      <div class="header-actions">
+        <a class="icon-btn" href="login.html" aria-label="Tài khoản">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </a>
+        <a class="icon-btn cart-link" href="cart.html" aria-label="Giỏ hàng">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          <span class="cart-count is-empty" data-cart-count>0</span>
+        </a>
       </div>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="products.html">Products</a></li>
-        <li><a href="categories.html">Categories</a></li>
-        <li><a href="contact.html">ContactUs</a></li>
-        <li><a href="login.html" id="login">Login</a></li>
-      </ul>
-      <div class="burger">
-        <div class="line1"></div>
-        <div class="line2"></div>
-        <div class="line3"></div>
+    </div>
+  </header>
+
+  <main class="auth-wrap">
+    <div class="auth-visual">
+      <blockquote>“Thời trang là cách bạn nói cho thế giới biết bạn là ai, mà không cần mở lời.”</blockquote>
+    </div>
+
+    <div class="auth-panel">
+      <!-- CHƯA ĐĂNG NHẬP -->
+      <div class="auth-card" id="authCard">
+        <h1>Tài khoản Merlin</h1>
+        <p>Đăng nhập để theo dõi đơn hàng và nhận ưu đãi riêng.</p>
+
+        <div class="auth-tabs" role="tablist">
+          <button type="button" id="tabLogin" class="is-active" role="tab" aria-selected="true">Đăng nhập</button>
+          <button type="button" id="tabRegister" role="tab" aria-selected="false">Đăng ký</button>
+        </div>
+
+        <form class="auth-form" id="loginForm" novalidate>
+          <div class="form-field">
+            <label for="loginEmail">Email</label>
+            <input type="email" id="loginEmail" autocomplete="email" placeholder="ban@email.com">
+            <span class="field-error" data-error-for="loginEmail"></span>
+          </div>
+          <div class="form-field">
+            <label for="loginPassword">Mật khẩu</label>
+            <input type="password" id="loginPassword" autocomplete="current-password" placeholder="••••••••">
+            <span class="field-error" data-error-for="loginPassword"></span>
+          </div>
+          <button class="btn btn--primary btn--block" type="submit">Đăng nhập</button>
+          <p class="text-muted" style="text-align: center">Chưa có tài khoản? Chọn tab “Đăng ký” bên trên.</p>
+        </form>
+
+        <form class="auth-form" id="registerForm" hidden novalidate>
+          <div class="form-field">
+            <label for="regName">Họ và tên</label>
+            <input type="text" id="regName" autocomplete="name" placeholder="Nguyễn Văn A">
+            <span class="field-error" data-error-for="regName"></span>
+          </div>
+          <div class="form-field">
+            <label for="regEmail">Email</label>
+            <input type="email" id="regEmail" autocomplete="email" placeholder="ban@email.com">
+            <span class="field-error" data-error-for="regEmail"></span>
+          </div>
+          <div class="form-field">
+            <label for="regPassword">Mật khẩu (tối thiểu 6 ký tự)</label>
+            <input type="password" id="regPassword" autocomplete="new-password" placeholder="••••••••">
+            <span class="field-error" data-error-for="regPassword"></span>
+          </div>
+          <button class="btn btn--primary btn--block" type="submit">Tạo tài khoản</button>
+        </form>
+
+        <div class="auth-note">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+          <span>Đây là bản web tĩnh: tài khoản và mật khẩu được lưu trên trình duyệt của bạn, không đồng bộ giữa các thiết bị. Khi cần thanh toán trực tuyến an toàn, hãy nâng cấp lên backend.</span>
+        </div>
       </div>
-    </nav>
-  <!-- navbar --> 
 
-    <div class="login">
-      <img src="images/login-images/login.png" alt="">
-      <div class="vl"></div>
-      <img src="images/login-images/undraw_empty_cart_co35.png" class="login-image" alt="">
+      <!-- ĐÃ ĐĂNG NHẬP -->
+      <div class="auth-card account-panel" id="accountCard" hidden>
+        <div class="account-panel__head">
+          <div>
+            <strong id="accountName">Xin chào</strong>
+            <span id="accountEmail"></span>
+          </div>
+          <button class="btn btn--outline" type="button" id="logoutBtn" style="min-height: 40px; padding: 0 18px">Đăng xuất</button>
+        </div>
+
+        <div>
+          <h2 style="font-family: var(--font-display); font-size: 22px; margin-bottom: 12px">Đơn hàng của bạn</h2>
+          <div class="order-list" id="orderList"></div>
+        </div>
+
+        <div class="auth-note">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+          <span>Đơn hàng được lưu trên trình duyệt này. Bạn có thể gửi lại đơn qua Zalo nếu cần hỗ trợ.</span>
+        </div>
+      </div>
     </div>
-    
-    <center>LOGIN HERE 🦄</center> 
-    <br><br>
-  
-    <div class="login-form">
-      <input type="text" placeholder="Username Or Email" id="username">
-      <br><br> 
-      <input type="password" placeholder="Password" id="password"><br><br>
-      <a href="index.html"><button class="login-button">LOG IN</button></a>&nbsp;&nbsp;
-      <a href="index.html"> <button class="back-button">BACK </button></a> 
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <span class="brand-script">Merlin</span>
+          <p>Thời trang nam nữ, giày dép và phụ kiện. Chọn lọc kỹ, giá thật, phục vụ tận tâm.</p>
+          <div class="footer-social">
+            <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1V7.9c0-.9.25-1.5 1.54-1.5h1.66V3.6c-.29-.04-1.27-.12-2.42-.12-2.4 0-4.04 1.46-4.04 4.15v2.27H7.5V13h2.74v8h3.26Z"/></svg>
+            </a>
+            <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+            </a>
+            <a href="https://youtube.com" target="_blank" rel="noopener" aria-label="YouTube">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="m10 9 5 3-5 3V9Z" fill="currentColor" stroke="none"/></svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <h3>Mua sắm</h3>
+          <div class="footer-links">
+            <a href="products.html">Tất cả sản phẩm</a>
+            <a href="products.html?category=nu">Thời trang nữ</a>
+            <a href="products.html?category=nam">Thời trang nam</a>
+            <a href="products.html?type=giay">Giày &amp; sneaker</a>
+            <a href="products.html?sale=1">Đang giảm giá</a>
+          </div>
+        </div>
+        <div>
+          <h3>Hỗ trợ</h3>
+          <div class="footer-links">
+            <a href="contact.html">Liên hệ</a>
+            <a href="contact.html">Chính sách đổi trả</a>
+            <a href="contact.html">Vận chuyển &amp; giao hàng</a>
+            <a href="contact.html">Hướng dẫn chọn size</a>
+            <a href="login.html">Tài khoản của tôi</a>
+          </div>
+        </div>
+        <div class="footer-contact">
+          <h3>Liên hệ</h3>
+          <p>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>12 Nguyễn Huệ, Hoàn Kiếm, Hà Nội</span>
+          </p>
+          <p>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <a href="tel:0909123456" data-hotline>0909 123 456</a>
+          </p>
+          <p>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+            <a href="mailto:hello@merlinfashion.vn" data-email>hello@merlinfashion.vn</a>
+          </p>
+          <p>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            <span>8:00 – 21:30, T2 – CN</span>
+          </p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Merlin Fashion. All rights reserved.</p>
+        <p>Thiết kế &amp; phát triển bởi Merlin Fashion</p>
+      </div>
     </div>
+  </footer>
 
-    <hr>
-    <br>
-
-    <h4 class="other-login-op">Or login with</h4>
-    <br>
-    
-    <div class="social">
-      <a href="https://google.com"><img src="images/icons/icon-google.png" class="other-login-op-img" height="33" width="30"alt=""></a>&nbsp;&nbsp;
-      <a href="https://facebook.com"><img src="images/icons/fb.png" class="other-login-op-img" height="30" width="35" alt=""></a>&nbsp;&nbsp;
-      <a href="https://google.com"><img src="images/icons/favicon.jpg" class="other-login-op-img" height="32" width="35"alt=""></a>
-    </div>
-
-  <script type="text/javascript" src="js/nav.js"></script>
-  <script src="js/login.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/shop.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/account.js"></script>
 </body>
 </html>
